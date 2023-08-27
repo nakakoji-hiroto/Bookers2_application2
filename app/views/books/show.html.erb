@@ -49,16 +49,17 @@
         <% end %>
       </table>
       
-      <% if @book_comment.errors.any? %>
-      <div id="error_explanation">
-        <h3><%= pluralize(@book_comment.errors.count, "error") %> prohibited this obj from being saved:</h3>
-        <ul>
-          <% @book_comment.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
+        <%= render 'layouts/errors' ,obj: @book_comment %>
+      <!--<%# if @book_comment.errors.any? %>-->
+      <!--<div id="error_explanation">-->
+      <!--  <h3><%#= pluralize(@book_comment.errors.count, "error") %> prohibited this obj from being saved:</h3>-->
+      <!--  <ul>-->
+      <!--    <%# @book_comment.errors.full_messages.each do |message| %>-->
+      <!--      <li><%#= message %></li>-->
+      <!--    <%# end %>-->
+      <!--  </ul>-->
+      <!--</div>-->
+      <!--<%# end %>-->
       
       <%= form_with model: [@book, @book_comment], class: "mt-2" do |f| %>
         <%= f.text_area :comment, class: "w-100", rows: "5",placeholder: "コメントをここに" %>
