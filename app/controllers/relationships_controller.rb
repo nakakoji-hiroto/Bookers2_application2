@@ -7,10 +7,18 @@ class RelationshipsController < ApplicationController
     redirect_back fallback_location: root_path
   end
   
-  def show
+  def show_follower
     @user = User.find(params[:user_id])
     @follower = @user.followers
     @followed = @user.followeds
+    @follows = Relationship.all
+  end
+  
+  def show_followed
+    @user = User.find(params[:user_id])
+    @follower = @user.followers
+    @followed = @user.followeds
+    @follows = Relationship.all
   end
   
   def destroy

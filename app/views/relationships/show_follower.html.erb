@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class='mx-auto col'>
+      <h2>Follow Users</h2>
+      <table class="table">
+        <% if @follower.exists? %>
+          <tr>
+            <td>image</td>
+            <td>name</td>
+            <td colspan="3"></td>
+          </tr>
+        <% @follower.each do |follower| %>
+          <tr>
+            <td><%= image_tag follower.get_profile_image, size: '50x50' %></td>
+            <td><%= follower.name %></td>
+            <td>フォロー数：<%= @follows.where(follower_id: follower.id).count %></td>
+            <td>フォロワー数：<%= @follows.where(followed_id: follower.id).count %></td>
+            <td><%= link_to 'Show', user_path(follower) %></td>
+          </tr>
+        <% end %>
+        <% else %>
+          <tr>
+            <td colspan="5">ユーザーはいません</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
