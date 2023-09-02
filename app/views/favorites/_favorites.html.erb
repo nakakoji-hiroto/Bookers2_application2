@@ -1,9 +1,9 @@
 <% unless favorite_book.favorited_by?(current_user) %>
-  <%= link_to book_favorites_path(favorite_book), method: :post do %>
+  <%= link_to book_favorites_path(favorite_book), method: :post, remote: true do %>
     <i class="fa-solid fa-heart"></i><span><%= favorite_book.favorites.count %></span>
   <% end %>
 <% else %>
-  <%= link_to book_favorites_path(favorite_book), class: "text-danger", method: :delete do %>
+  <%= link_to book_favorites_path(favorite_book), class: "text-danger", method: :delete, remote: true do %>
     <i class="fa-solid fa-heart"></i><span><%= favorite_book.favorites.count %></span>
   <% end %>
 <% end %>

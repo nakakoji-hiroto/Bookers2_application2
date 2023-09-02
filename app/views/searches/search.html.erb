@@ -11,30 +11,23 @@
     <h3><%= pluralize(@users.count, "#{@range}") %> search for "<%= "#{@word}" %>"</h3>
   <% end %>
 <% end %>
-<table class="table mx-auto">
-  <% if @range == "Book" %>
-    <thead>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-    </thead>
-    <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <th><%= image_tag book.user.get_profile_image, size: '50x50' %></th>
-        <th><%= link_to book.title, book_path(book) %></th>
-        <th><%= book.body %></th>
-      </tr>
-    <% end %>
-    </tbody>
-  <% else %>
-    <thead>
-      <th></th>
-      <th>Name</th>
-      <th>Introduction</th>
-    </thead>
-    <tbody>
-    <%= render 'users/index',users: @users,follow: @follow %>
-    </tbody>
-  <% end %>
-</table>
+
+<% if @range == "Book" %>
+  <%= render 'books/index',books: @books %>
+  <!--<thead>-->
+  <!--  <th></th>-->
+  <!--  <th>Title</th>-->
+  <!--  <th>Opinion</th>-->
+  <!--</thead>-->
+  <!--<tbody>-->
+  <!--<%# @books.each do |book| %>-->
+  <!--  <tr>-->
+  <!--    <th><%#= image_tag book.user.get_profile_image, size: '50x50' %></th>-->
+  <!--    <th><%#= link_to book.title, book_path(book) %></th>-->
+  <!--    <th><%#= book.body %></th>-->
+  <!--  </tr>-->
+  <!--<%# end %>-->
+  <!--</tbody>-->
+<% else %>
+  <%= render 'users/index',users: @users,follow: @follow %>
+<% end %>
