@@ -22,6 +22,9 @@
         <td>
           <%= render 'book_comments/comments',comments: book %>
         </td>
+        <td>
+          <%= render 'books/score',book_star: book %>
+        </td>
       </tr>
     <% end %>
   </tbody>

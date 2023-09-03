@@ -1,0 +1,17 @@
+<div id="star-rate-<%= book_star.id %>" class="star_img"></div>
+
+<script>
+    $('#star-rate-<%= book_star.id %>').empty();
+    var elem2 = document.querySelector('#star-rate-<%= book_star.id %>')
+　  var opt2 = {
+　    size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      scoreName: 'book[score]',
+      score: '<%= book_star.score %>',
+      half: false,
+      readOnly: true,
+　  };
+　  raty(elem2,opt2);
+</script>
+
