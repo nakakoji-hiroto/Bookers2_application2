@@ -17,6 +17,11 @@
           </td>
           <td><%= link_to @book.title, @book %></td>
           <td><%= @book.body %></td>
+          <% if @book.tag.nil? %>
+            <td></td>
+          <% else %>
+            <td><%= link_to @book.tag, tags_path(tag: @book.tag) %></td>
+          <% end %>
           <td id="favorite_buttons_<%= @book.id %>">
             <%= render 'favorites/favorites',favorite_book: @book %>
           </td>

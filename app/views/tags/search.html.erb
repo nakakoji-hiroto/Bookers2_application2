@@ -1,0 +1,6 @@
+<% unless @tags.exists? %>
+    <h3>No books with such tag</h3>
+  <% else %>
+    <h3><%= pluralize(@tags.count, 'tag') %> search for <%= @tag_word %></h3>
+    <%= render 'books/index',books: @tags %>
+<% end %>
